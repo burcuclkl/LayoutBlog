@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_BlogLayout.cshtml";
+}
+
+    <div class="row">
+        @foreach (Products products in ViewBag.Products)
+        {
+            <div class="col-md-3">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">@products.ProductID - @products.ProductName</div>
+                    <div class="panel-body">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>fiyat</th>
+                                    <th>stok</th>
+                                    <th>kategori ıd</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>@products.UnitPrice</td>
+                                    <td>@products.UnitsInStock</td>
+                                    <td>@products.CategoryID</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>

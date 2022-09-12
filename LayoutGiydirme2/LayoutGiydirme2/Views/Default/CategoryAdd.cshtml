@@ -1,0 +1,53 @@
+﻿@using LayoutGiydirme2.Models
+@model SaveCategoryRequest
+@{
+    ViewBag.Title = "CategoryAdd";
+    Layout = "~/Views/_BlogLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-success">
+                <div class="panel-heading">kategori listesi</div>
+                <div class="panel-body">
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>kategori ad</th>
+                                <th>kategori açıklama</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Categories categories in ViewBag.Categories)
+                            {
+                                <tr>
+                                    <td>@categories.CategoryName</td>
+                                    <td>@categories.Description</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">kategori ekleme</div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("SaveCategory", "Default", FormMethod.Post))
+                    {
+                        <label>kategori ad</label>
+                        @Html.TextBoxFor(p => p.Name, new { @class = "form-control" })
+
+                        <label>kategori açıklama</label>
+                        @Html.TextBoxFor(p => p.Description, new { @class = "form-control" })
+
+                        <button class="btn btn-primary btn-block">ekle</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
